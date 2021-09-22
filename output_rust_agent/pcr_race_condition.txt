@@ -1,0 +1,40 @@
+## REGISTRAR STDOUT
+... same as in "add" case
+
+## VERIFIER STDOUT
+
+...
+2021-09-22 16:38:03.303 - keylime.tpm - INFO - Checking IMA measurement list on agent: d432fbb3-d2f1-4a97-9ef7-75bd81c00000
+2021-09-22 16:38:07.392 - keylime.cloudverifier - CRITICAL - Unexpected Get Quote response error for cloud agent d432fbb3-d2f1-4a97-9ef7-75bd81c00000, Error: 500
+2021-09-22 16:38:07.842 - keylime.cloudverifier - WARNING - Agent d432fbb3-d2f1-4a97-9ef7-75bd81c00000 failed, stopping polling
+...
+
+## TENANT STDOUT
+
+[root@localhost ~]# keylime_tenant -v 127.0.0.1 -t 127.0.0.1 --uuid d432fbb3-d2f1-4a97-9ef7-75bd81c00000 -c status
+Using config file /etc/keylime.conf
+2021-09-22 16:41:48.134 - keylime.tpm - INFO - TPM2-TOOLS Version: 4.3.2
+2021-09-22 16:41:48.136 - keylime.tenant - INFO - Setting up client TLS in /var/lib/keylime/cv_ca
+/usr/lib/python3.9/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host '127.0.0.1'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(
+2021-09-22 16:41:49.892 - keylime.tenant - INFO - Agent Status: "Failed"
+2021-09-22 16:41:49.892 - keylime.tenant - INFO - Agent severity level: "6"
+2021-09-22 16:41:49.892 - keylime.tenant - INFO - Agent last event id: "internal.verifier.no_quote"
+
+
+## RUST AGENT STDOUT
+...
+INFO  keylime_agent::quotes_handler  > GET invoked from "127.0.0.1:48868" with uri /v1.0/quotes/integrity?nonce=CF2SlHkdem4zkZWx6aDL&mask=0x408400&vmask=0x808000&partial=1&ima_ml_entry=1164
+ INFO  keylime_agent::quotes_handler  > Calling Integrity Quote with nonce: CF2SlHkdem4zkZWx6aDL, mask: 0x408400
+ TRACE keylime_agent::tpm             > Attested to PCR digest: [224, 113, 125, 62, 91, 188, 213, 204, 84, 147, 159, 123, 122, 16, 75, 112, 231, 110, 136, 100, 121, 93, 100, 31, 135, 3, 128, 4, 18, 66, 53, 233], read PCR digest: [1, 249, 68, 76, 214, 30, 15, 202, 181, 117, 195, 51, 162, 44, 188, 253, 88, 54, 125, 166, 157, 14, 203, 151, 249, 71, 50, 175, 118, 1, 44, 244]
+ INFO  keylime_agent::tpm             > PCR data and attestation data mismatched on attempt 0
+ TRACE keylime_agent::tpm             > Attested to PCR digest: [224, 113, 125, 62, 91, 188, 213, 204, 84, 147, 159, 123, 122, 16, 75, 112, 231, 110, 136, 100, 121, 93, 100, 31, 135, 3, 128, 4, 18, 66, 53, 233], read PCR digest: [1, 249, 68, 76, 214, 30, 15, 202, 181, 117, 195, 51, 162, 44, 188, 253, 88, 54, 125, 166, 157, 14, 203, 151, 249, 71, 50, 175, 118, 1, 44, 244]
+ INFO  keylime_agent::tpm             > PCR data and attestation data mismatched on attempt 1
+ TRACE keylime_agent::tpm             > Attested to PCR digest: [224, 113, 125, 62, 91, 188, 213, 204, 84, 147, 159, 123, 122, 16, 75, 112, 231, 110, 136, 100, 121, 93, 100, 31, 135, 3, 128, 4, 18, 66, 53, 233], read PCR digest: [1, 249, 68, 76, 214, 30, 15, 202, 181, 117, 195, 51, 162, 44, 188, 253, 88, 54, 125, 166, 157, 14, 203, 151, 249, 71, 50, 175, 118, 1, 44, 244]
+ INFO  keylime_agent::tpm             > PCR data and attestation data mismatched on attempt 2
+ TRACE keylime_agent::tpm             > Attested to PCR digest: [224, 113, 125, 62, 91, 188, 213, 204, 84, 147, 159, 123, 122, 16, 75, 112, 231, 110, 136, 100, 121, 93, 100, 31, 135, 3, 128, 4, 18, 66, 53, 233], read PCR digest: [1, 249, 68, 76, 214, 30, 15, 202, 181, 117, 195, 51, 162, 44, 188, 253, 88, 54, 125, 166, 157, 14, 203, 151, 249, 71, 50, 175, 118, 1, 44, 244]
+ INFO  keylime_agent::tpm             > PCR data and attestation data mismatched on attempt 3
+ TRACE keylime_agent::tpm             > Attested to PCR digest: [224, 113, 125, 62, 91, 188, 213, 204, 84, 147, 159, 123, 122, 16, 75, 112, 231, 110, 136, 100, 121, 93, 100, 31, 135, 3, 128, 4, 18, 66, 53, 233], read PCR digest: [1, 249, 68, 76, 214, 30, 15, 202, 181, 117, 195, 51, 162, 44, 188, 253, 88, 54, 125, 166, 157, 14, 203, 151, 249, 71, 50, 175, 118, 1, 44, 244]
+ INFO  keylime_agent::tpm             > PCR data and attestation data mismatched on attempt 4
+ ERROR keylime_agent::tpm             > PCR data and attestation data mismatched on all 5 attempts, giving up
+
