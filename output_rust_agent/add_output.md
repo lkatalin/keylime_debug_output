@@ -1,4 +1,4 @@
-## REGISTRAR STDOUT
+### REGISTRAR STDOUT
 
 ```
 [root@localhost ~]# keylime_registrar
@@ -9,7 +9,7 @@
 ...
 ```
 
-## VERIFIER STDOUT
+### VERIFIER STDOUT
 
 ```
 ...
@@ -28,48 +28,7 @@
 ...
 ```
 
-## TENANT STDOUT
-
-### Add
-
-```
-[root@localhost ~]# keylime_tenant -v 127.0.0.1 -t 127.0.0.1 --uuid d432fbb3-d2f1-4a97-9ef7-75bd81c00000 --allowlist /root/allowlist.txt --include /root/senddir --cert /root/ca --exclude /root/excludes.txt -c add
-Using config file /etc/keylime.conf
-2021-09-22 16:32:35.059 - keylime.tpm - INFO - TPM2-TOOLS Version: 4.3.2
-2021-09-22 16:32:35.060 - keylime.tenant - INFO - Setting up client TLS in /var/lib/keylime/cv_ca
-2021-09-22 16:32:35.061 - keylime.registrar_client - WARNING - TLS is enabled.
-2021-09-22 16:32:35.061 - keylime.registrar_client - INFO - Setting up client TLS...
-/usr/lib/python3.9/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host '127.0.0.1'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
-  warnings.warn(
-2021-09-22 16:32:35.076 - keylime.tenant - INFO - TPM PCR Mask from policy is 0x408000
-2021-09-22 16:32:35.076 - keylime.tenant - INFO - TPM PCR Mask from policy is 0x808000
-Please enter the password to decrypt your keystore: 
-2021-09-22 16:32:39.097 - keylime.ca-util - INFO - Creating cert package for d432fbb3-d2f1-4a97-9ef7-75bd81c00000 in d432fbb3-d2f1-4a97-9ef7-75bd81c00000-pkg.zip
-2021-09-22 16:32:39.142 - keylime.ca-util - INFO - Creating cert package for RevocationNotifier in RevocationNotifier-pkg.zip
-/usr/lib/python3.9/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host '127.0.0.1'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/lib/python3.9/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host '127.0.0.1'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
-  warnings.warn(
-2021-09-22 16:32:40.094 - keylime.tenant - WARNING - DANGER: EK cert checking is disabled and no additional checks on EKs have been specified with ek_check_script option. Keylime is not secure!!
-2021-09-22 16:32:40.095 - keylime.tenant - INFO - Quote from 127.0.0.1 validated
-```
-
-###Status
-
-```
-[root@localhost ~]# keylime_tenant -v 127.0.0.1 -t 127.0.0.1 --uuid d432fbb3-d2f1-4a97-9ef7-75bd81c00000 -c status
-Using config file /etc/keylime.conf
-2021-09-22 16:37:49.274 - keylime.tpm - INFO - TPM2-TOOLS Version: 4.3.2
-2021-09-22 16:37:49.276 - keylime.tenant - INFO - Setting up client TLS in /var/lib/keylime/cv_ca
-/usr/lib/python3.9/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host '127.0.0.1'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
-  warnings.warn(
-2021-09-22 16:37:50.887 - keylime.tenant - INFO - Agent Status: "Get Quote"
-2021-09-22 16:37:50.887 - keylime.tenant - INFO - Agent severity level: "None"
-2021-09-22 16:37:50.887 - keylime.tenant - INFO - Agent last event id: "None"
-```
-
-
-## RUST AGENT STDOUT
+### RUST AGENT STDOUT
 
 ```
 INFO  keylime_agent                  > Listening on http://127.0.0.1:9002
@@ -107,4 +66,44 @@ INFO  keylime_agent                  > Listening on http://127.0.0.1:9002
  TRACE keylime_agent::tpm             > Attested to PCR digest: [1, 249, 68, 76, 214, 30, 15, 202, 181, 117, 195, 51, 162, 44, 188, 253, 88, 54, 125, 166, 157, 14, 203, 151, 249, 71, 50, 175, 118, 1, 44, 244], read PCR digest: [1, 249, 68, 76, 214, 30, 15, 202, 181, 117, 195, 51, 162, 44, 188, 253, 88, 54, 125, 166, 157, 14, 203, 151, 249, 71, 50, 175, 118, 1, 44, 244]
  INFO  keylime_agent::quotes_handler  > GET integrity quote returning 200 response
 ...
+```
+
+### TENANT STDOUT
+
+#### Add
+
+```
+[root@localhost ~]# keylime_tenant -v 127.0.0.1 -t 127.0.0.1 --uuid d432fbb3-d2f1-4a97-9ef7-75bd81c00000 --allowlist /root/allowlist.txt --include /root/senddir --cert /root/ca --exclude /root/excludes.txt -c add
+Using config file /etc/keylime.conf
+2021-09-22 16:32:35.059 - keylime.tpm - INFO - TPM2-TOOLS Version: 4.3.2
+2021-09-22 16:32:35.060 - keylime.tenant - INFO - Setting up client TLS in /var/lib/keylime/cv_ca
+2021-09-22 16:32:35.061 - keylime.registrar_client - WARNING - TLS is enabled.
+2021-09-22 16:32:35.061 - keylime.registrar_client - INFO - Setting up client TLS...
+/usr/lib/python3.9/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host '127.0.0.1'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(
+2021-09-22 16:32:35.076 - keylime.tenant - INFO - TPM PCR Mask from policy is 0x408000
+2021-09-22 16:32:35.076 - keylime.tenant - INFO - TPM PCR Mask from policy is 0x808000
+Please enter the password to decrypt your keystore: 
+2021-09-22 16:32:39.097 - keylime.ca-util - INFO - Creating cert package for d432fbb3-d2f1-4a97-9ef7-75bd81c00000 in d432fbb3-d2f1-4a97-9ef7-75bd81c00000-pkg.zip
+2021-09-22 16:32:39.142 - keylime.ca-util - INFO - Creating cert package for RevocationNotifier in RevocationNotifier-pkg.zip
+/usr/lib/python3.9/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host '127.0.0.1'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/usr/lib/python3.9/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host '127.0.0.1'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(
+2021-09-22 16:32:40.094 - keylime.tenant - WARNING - DANGER: EK cert checking is disabled and no additional checks on EKs have been specified with ek_check_script option. Keylime is not secure!!
+2021-09-22 16:32:40.095 - keylime.tenant - INFO - Quote from 127.0.0.1 validated
+```
+
+#### Status
+
+```
+[root@localhost ~]# keylime_tenant -v 127.0.0.1 -t 127.0.0.1 --uuid d432fbb3-d2f1-4a97-9ef7-75bd81c00000 -c status
+Using config file /etc/keylime.conf
+2021-09-22 16:37:49.274 - keylime.tpm - INFO - TPM2-TOOLS Version: 4.3.2
+2021-09-22 16:37:49.276 - keylime.tenant - INFO - Setting up client TLS in /var/lib/keylime/cv_ca
+/usr/lib/python3.9/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host '127.0.0.1'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(
+2021-09-22 16:37:50.887 - keylime.tenant - INFO - Agent Status: "Get Quote"
+2021-09-22 16:37:50.887 - keylime.tenant - INFO - Agent severity level: "None"
+2021-09-22 16:37:50.887 - keylime.tenant - INFO - Agent last event id: "None"
 ```

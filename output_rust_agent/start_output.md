@@ -1,4 +1,4 @@
-## REGISTRAR STDOUT
+### REGISTRAR STDOUT
 
 ```
 [root@localhost ~]# keylime_registrar
@@ -31,7 +31,7 @@ Using config file /etc/keylime.conf
 2021-09-22 16:29:28.884 - keylime.registrar - INFO - GET returning 200 response for agent_id: d432fbb3-d2f1-4a97-9ef7-75bd81c00000
 ```
 
-## VERIFIER STDOUT
+### VERIFIER STDOUT
 
 ```
 [root@localhost ~]# keylime_verifier
@@ -60,23 +60,7 @@ Using config file /etc/keylime.conf
 2021-09-22 11:24:05.355 - keylime.cloudverifier - INFO - Starting service for revocation notifications on port 8992
 ```
 
-## TENANT STDOUT
-
-```
-[root@localhost ~]# keylime_tenant -v 127.0.0.1 -t 127.0.0.1 --uuid d432fbb3-d2f1-4a97-9ef7-75bd81c00000 -c status
-Using config file /etc/keylime.conf
-2021-09-22 16:29:28.838 - keylime.tpm - INFO - TPM2-TOOLS Version: 4.3.2
-2021-09-22 16:29:28.840 - keylime.tenant - INFO - Setting up client TLS in /var/lib/keylime/cv_ca
-/usr/lib/python3.9/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host '127.0.0.1'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
-  warnings.warn(
-2021-09-22 16:29:28.869 - keylime.registrar_client - WARNING - TLS is enabled.
-2021-09-22 16:29:28.869 - keylime.registrar_client - INFO - Setting up client TLS...
-/usr/lib/python3.9/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host '127.0.0.1'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
-  warnings.warn(
-2021-09-22 16:29:28.885 - keylime.tenant - INFO - Agent Status: "Registered"
-```
-
-## RUST AGENT STDOUT
+### RUST AGENT STDOUT
 
 ```
 [keylime-ima@localhost rust-keylime]$ sudo RUST_LOG=keylime_agent=trace ./target/debug/keylime_agent
@@ -91,4 +75,20 @@ Using config file /etc/keylime.conf
  INFO  keylime_agent                  > SUCCESS: Agent d432fbb3-d2f1-4a97-9ef7-75bd81c00000 activated
  INFO  keylime_agent                  > Listening on http://127.0.0.1:9002
 
+```
+
+### TENANT STDOUT
+
+```
+[root@localhost ~]# keylime_tenant -v 127.0.0.1 -t 127.0.0.1 --uuid d432fbb3-d2f1-4a97-9ef7-75bd81c00000 -c status
+Using config file /etc/keylime.conf
+2021-09-22 16:29:28.838 - keylime.tpm - INFO - TPM2-TOOLS Version: 4.3.2
+2021-09-22 16:29:28.840 - keylime.tenant - INFO - Setting up client TLS in /var/lib/keylime/cv_ca
+/usr/lib/python3.9/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host '127.0.0.1'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(
+2021-09-22 16:29:28.869 - keylime.registrar_client - WARNING - TLS is enabled.
+2021-09-22 16:29:28.869 - keylime.registrar_client - INFO - Setting up client TLS...
+/usr/lib/python3.9/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host '127.0.0.1'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(
+2021-09-22 16:29:28.885 - keylime.tenant - INFO - Agent Status: "Registered"
 ```
