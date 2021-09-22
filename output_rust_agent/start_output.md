@@ -1,5 +1,6 @@
-## REGISTAR STDOUT
+## REGISTRAR STDOUT
 
+```
 [root@localhost ~]# keylime_registrar
 Using config file /etc/keylime.conf
 2021-09-22 11:23:57.868 - keylime.keylime_db - INFO - database_url is not set, using multi-parameter database configuration options
@@ -28,10 +29,11 @@ Using config file /etc/keylime.conf
 2021-09-22 16:29:14.548 - keylime.registrar - INFO - POST returning key blob for agent_id: d432fbb3-d2f1-4a97-9ef7-75bd81c00000
 2021-09-22 16:29:14.701 - keylime.registrar - INFO - PUT activated: d432fbb3-d2f1-4a97-9ef7-75bd81c00000
 2021-09-22 16:29:28.884 - keylime.registrar - INFO - GET returning 200 response for agent_id: d432fbb3-d2f1-4a97-9ef7-75bd81c00000
-
+```
 
 ## VERIFIER STDOUT
 
+```
 [root@localhost ~]# keylime_verifier
 Using config file /etc/keylime.conf
 2021-09-22 11:24:05.176 - keylime.keylime_db - INFO - database_url is not set, using multi-parameter database configuration options
@@ -56,10 +58,11 @@ Using config file /etc/keylime.conf
 2021-09-22 11:24:05.355 - keylime.cloudverifier_common - INFO - Setting up TLS...
 2021-09-22 11:24:05.355 - keylime.cloudverifier_common - INFO - Existing CA certificate found in /var/lib/keylime/cv_ca, not generating a new one
 2021-09-22 11:24:05.355 - keylime.cloudverifier - INFO - Starting service for revocation notifications on port 8992
-
+```
 
 ## TENANT STDOUT
 
+```
 [root@localhost ~]# keylime_tenant -v 127.0.0.1 -t 127.0.0.1 --uuid d432fbb3-d2f1-4a97-9ef7-75bd81c00000 -c status
 Using config file /etc/keylime.conf
 2021-09-22 16:29:28.838 - keylime.tpm - INFO - TPM2-TOOLS Version: 4.3.2
@@ -71,11 +74,11 @@ Using config file /etc/keylime.conf
 /usr/lib/python3.9/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host '127.0.0.1'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
   warnings.warn(
 2021-09-22 16:29:28.885 - keylime.tenant - INFO - Agent Status: "Registered"
-
-
+```
 
 ## RUST AGENT STDOUT
 
+```
 [keylime-ima@localhost rust-keylime]$ sudo RUST_LOG=keylime_agent=trace ./target/debug/keylime_agent
  WARN  keylime_agent > INSECURE: Keylime is using a software TPM emulator rather than a real hardware TPM.
  WARN  keylime_agent > INSECURE: The security of Keylime is NOT linked to a hardware root of trust.
@@ -88,4 +91,4 @@ Using config file /etc/keylime.conf
  INFO  keylime_agent                  > SUCCESS: Agent d432fbb3-d2f1-4a97-9ef7-75bd81c00000 activated
  INFO  keylime_agent                  > Listening on http://127.0.0.1:9002
 
-
+```

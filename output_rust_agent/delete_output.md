@@ -1,5 +1,6 @@
 ## REGISTRAR STDOUT
 
+```
 [root@localhost ~]# keylime_registrar
 Using config file /etc/keylime.conf
 2021-09-22 16:51:13.993 - keylime.keylime_db - INFO - database_url is not set, using multi-parameter database configuration options
@@ -21,10 +22,11 @@ Using config file /etc/keylime.conf
 2021-09-22 16:52:07.799 - keylime.registrar - INFO - GET returning 200 response for agent_id: d432fbb3-d2f1-4a97-9ef7-75bd81c00000
 2021-09-22 16:52:11.471 - keylime.registrar - INFO - GET returning 200 response for agent_id: d432fbb3-d2f1-4a97-9ef7-75bd81c00000
 2021-09-22 16:52:11.673 - keylime.registrar - INFO - GET returning 200 response for agent_id: d432fbb3-d2f1-4a97-9ef7-75bd81c00000
-
+```
 
 ## VERIFIER STDOUT
 
+```
 [root@localhost ~]# keylime_verifier
 Using config file /etc/keylime.conf
 2021-09-22 16:51:25.555 - keylime.keylime_db - INFO - database_url is not set, using multi-parameter database configuration options
@@ -56,9 +58,10 @@ Using config file /etc/keylime.conf
 2021-09-22 16:52:39.292 - keylime.cloudverifier_common - WARNING - Non-fatal problem ocurred while attempting to evaluate agent attribute "mb_refstate" (('malformed node or string: <ast.Name object at 0x7ff478021940>',)). Will just consider the value of this attribute to be "None"
 2021-09-22 16:52:39.323 - keylime.tpm - INFO - Checking IMA measurement list on agent: d432fbb3-d2f1-4a97-9ef7-75bd81c00000
 2021-09-22 16:52:41.672 - keylime.cloudverifier_common - WARNING - Non-fatal problem ocurred while attempting to evaluate agent attribute "mb_refstate" (('malformed node or string: <ast.Name object at 0x7ff48c9f0fd0>',)). Will just consider the value of this attribute to be "None"
-
+```
 
 ## RUST AGENT STDOUT
+```
 ...
  INFO  keylime_agent::quotes_handler  > Calling Integrity Quote with nonce: NCYlGKL9AaFNpnZ9Czg3, mask: 0x408400
  TRACE keylime_agent::tpm             > Attested to PCR digest: [191, 140, 150, 120, 178, 156, 71, 85, 48, 100, 210, 171, 225, 237, 34, 6, 72, 85, 246, 212, 94, 196, 230, 19, 216, 106, 199, 71, 219, 202, 32, 157], read PCR digest: [194, 162, 159, 168, 181, 170, 96, 242, 51, 225, 65, 75, 81, 125, 162, 144, 81, 11, 168, 38, 36, 224, 31, 185, 242, 19, 28, 126, 135, 253, 141, 2]
@@ -66,12 +69,13 @@ Using config file /etc/keylime.conf
  TRACE keylime_agent::tpm             > Attested to PCR digest: [191, 140, 150, 120, 178, 156, 71, 85, 48, 100, 210, 171, 225, 237, 34, 6, 72, 85, 246, 212, 94, 196, 230, 19, 216, 106, 199, 71, 219, 202, 32, 157], read PCR digest: [191, 140, 150, 120, 178, 156, 71, 85, 48, 100, 210, 171, 225, 237, 34, 6, 72, 85, 246, 212, 94, 196, 230, 19, 216, 106, 199, 71, 219, 202, 32, 157]
  INFO  keylime_agent::quotes_handler  > GET integrity quote returning 200 response
 ...
-
+```
 
 ## TENANT STDOUT
 
 ### Delete
 
+```
 [root@localhost ~]# keylime_tenant -v 127.0.0.1 -t 127.0.0.1 --uuid d432fbb3-d2f1-4a97-9ef7-75bd81c00000 --allowlist /root/allowlist.txt --include /root/senddir --cert /root/ca --exclude /root/excludes.txt -c delete
 Using config file /etc/keylime.conf
 2021-09-22 16:52:35.956 - keylime.tpm - INFO - TPM2-TOOLS Version: 4.3.2
@@ -150,10 +154,11 @@ File "/usr/lib/python3.9/site-packages/requests/sessions.py", line 543, in get
   File "/usr/lib/python3.9/site-packages/requests/adapters.py", line 498, in send
     raise ConnectionError(err, request=request)
 requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
-
+```
 
 ### Status
 
+```
 [root@localhost ~]# keylime_tenant -v 127.0.0.1 -t 127.0.0.1 --uuid d432fbb3-d2f1-4a97-9ef7-75bd81c00000 -c status
 Using config file /etc/keylime.conf
 2021-09-22 16:56:24.908 - keylime.tpm - INFO - TPM2-TOOLS Version: 4.3.2
@@ -224,4 +229,4 @@ Traceback (most recent call last):
   File "/usr/lib/python3.9/site-packages/requests/adapters.py", line 498, in send
     raise ConnectionError(err, request=request)
 requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
-
+```
